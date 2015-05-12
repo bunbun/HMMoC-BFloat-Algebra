@@ -517,7 +517,7 @@ static inline BFloat bfloat_pr_double_product ( const BFloat& a, double const & 
   if( b == 0.0 ) {
     return 0.0;
   }
-  register double mantisse = a.f*b;
+  double mantisse = a.f*b;
   int exponent = a.e;
   DoubleNormalise(mantisse, exponent);
   return BFloat( mantisse, exponent, false );
@@ -549,7 +549,7 @@ static inline void bfloat_pr_double_product_accum (  BFloat& a, double const & b
     a.clear();
     return;
   }
-  register double mantisse = a.f*b;
+  double mantisse = a.f*b;
   DoubleNormalise( mantisse, a.e );
   a.f = mantisse;
   assertBFloatValidity( a );
@@ -565,7 +565,7 @@ static inline BFloat bfloat_pr_power (const BFloat& a, const BFloat& b)
 static inline BFloat bfloat_pr_double_power ( const BFloat& a, double const & b )
 {
   // TODO: test, make sure it's safe.  Probably it's not.
-  register double mantisse = ::pow(a.f, b);
+  double mantisse = ::pow(a.f, b);
   int exponent = a.e;
   DoubleNormalise(mantisse, exponent);
   return BFloat(mantisse, exponent);
